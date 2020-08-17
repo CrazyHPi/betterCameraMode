@@ -1,5 +1,5 @@
 # betterCameraMode
-alt plugins for carpet CameraMode
+alt plugins for carpet CameraMode or maybe use [cam.sc](https://github.com/gnembon/scarpet/blob/master/programs/survival/cam.sc) if you don't use spec tp
 
 type `!!c` to active and deactive
 
@@ -7,4 +7,4 @@ type `!!c` to active and deactive
 
 灵感来自[gamemode](https://github.com/Squaregentleman/MCDR-plugins)插件，因为原插件太长太辣还有不需要的功能就自己写了个
 
-已知bug: 玩家站在方块边缘!!c可能会穿墙或者掉下高空，因为偷懒了直接取整了玩家坐标，改日再改
+保存坐标小数点后一位数，站在比较刁钻的坐标还是会穿墙，不过满足使用需求了(咕
