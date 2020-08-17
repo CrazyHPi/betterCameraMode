@@ -21,7 +21,11 @@ def on_info(server, info):
             server.reply(info, '§4在？你为啥是冒险模式？')
         elif result['playerGameType'] == 0 :
             with open('./plugins/betterCameraMode/' + info.player, 'w+') as f:
-                f.write(str(int(result["Pos"][0])) + ' ' + str(int(result["Pos"][1])) + ' ' + str(int(result["Pos"][2])) + ' ' + str(result["Dimension"]))
+                f.write(
+                    str(round(float(result["Pos"][0]),1)) + ' ' +
+                    str(round(float(result["Pos"][1]),1)) + ' ' +
+                    str(round(float(result["Pos"][2]),1)) + ' ' +
+                    str(result["Dimension"]))
             server.reply(info, '§2位置已保存，灵魂出窍辣')
             server.reply(info, '§6使用!!c回到本体')
             server.execute('gamemode spectator ' + info.player)
