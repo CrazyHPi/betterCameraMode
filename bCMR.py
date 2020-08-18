@@ -4,7 +4,7 @@ import re
 import os
 import time
 
-here_user = 0
+bcmr_user = 0
 
 def on_load(server, old):
     server.add_help_message('!!c', '更好的灵魂出窍/观察者摄像机')
@@ -38,10 +38,10 @@ def change_mode(server, name, gm, dim, pos):
 
 def on_info(server, info):
     if info.is_player and info.content == '!!c':
-        global here_user
-        here_user += 1
+        global bcmr_user
+        bcmr_user += 1
         server.execute('data get entity ' + info.player)
-    if not info.is_player and here_user > 0 and re.match(r'\w+ has the following entity data: ', info.content) is not None:
+    if not info.is_player and bcmr_user > 0 and re.match(r'\w+ has the following entity data: ', info.content) is not None:
         name = info.content.split(' ')[0]
         gm = re.search(r'(?<= playerGameType: )(.*?),', info.content).group().replace(',','')
         dimension = re.search(r'(?<= Dimension: )(.*?),', info.content).group().replace('"', '').replace(',', '')
