@@ -11,12 +11,12 @@ def on_load(server, old):
     if not os.path.exists('./plugins/betterCameraMode/'):
         os.makedirs('./plugins/betterCameraMode/')
 
-def process_coordinate(text):
+def bcmr_process_coordinate(text):
     data = text[1:-1].replace('d', '').split(', ')
     data = [(x + 'E0').split('E') for x in data]
     return tuple([float(e[0]) * 10 ** int(e[1]) for e in data])
 
-def change_mode(server, name, gm, dim, pos):
+def bcmr_change_mode(server, name, gm, dim, pos):
     if gm == '0':
         with open('./plugins/betterCameraMode/' + name, 'w+') as f:
             f.write(dim  + ' ' + str(round(pos[0],1)) + ' ' + str(round(pos[1],1)) + ' ' + str(round(pos[2],1)))
@@ -46,5 +46,5 @@ def on_info(server, info):
         gm = re.search(r'(?<= playerGameType: )(.*?),', info.content).group().replace(',','')
         dimension = re.search(r'(?<= Dimension: )(.*?),', info.content).group().replace('"', '').replace(',', '')
         position_str = re.search(r'(?<=Pos: )\[.*?\]', info.content).group()
-        position = process_coordinate(position_str)
-        change_mode(server, name, gm, dimension, position)
+        position = bcmr_process_coordinate(position_str)
+        bcmr_change_mode(server, name, gm, dimension, position)
