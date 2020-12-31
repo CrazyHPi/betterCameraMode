@@ -48,3 +48,4 @@ def on_info(server, info):
         position_str = re.search(r'(?<=Pos: )\[.*?\]', info.content).group()
         position = bcmr_process_coordinate(position_str)
         bcmr_change_mode(server, name, gm, dimension, position)
+        bcmr_user -=1
