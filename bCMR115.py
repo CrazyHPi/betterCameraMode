@@ -43,7 +43,7 @@ def change_mode(server, name, gm, dim, pos):
                 server.execute('gamemode survival ' + name)
 
 def on_info(server, info):
-    if info.is_player and info.content == '!!c':
+    if info.is_player and info.content == '!!c' or info.is_player and info.content == '!!C':
         global bcmr_user
         bcmr_user += 1
         server.execute('data get entity ' + info.player)
@@ -54,3 +54,4 @@ def on_info(server, info):
         position_str = re.search(r'(?<=Pos: )\[.*?\]', info.content).group()
         position = process_coordinate(position_str)
         change_mode(server, name, gm, dimension, position)
+        bcmr_user -= 1
